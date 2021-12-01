@@ -45,7 +45,7 @@
                                     <form action="{{ url('/hogar/'.$hogar->idhogar ) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <input class="form-control" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
+                                        <input class="form-control" type="submit" style="width: 130px;height: 40px;" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
                                     </form>
                                 </td>
                             </tr>
@@ -53,15 +53,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
-            <div class="text-center">
-                <div class="card table-responsive">
+                    <br/><br/>
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
@@ -83,9 +75,12 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>
+
+ 
 
     <style>
 
