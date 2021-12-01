@@ -14,6 +14,28 @@
                     <div class="btn-group">
                         <br/><a href="{{url('/dashboard')}}"><button style="width: 120px;height: 40px;float:left;">Volver</button></a>
                     </div>
+
+                    <table class="table table-light">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Últimos Puntos</th>
+                                <th>Último Peso</th>
+                                <th>Total Puntos</th>
+                                <th>Total Peso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach( $hogares as $hogar )
+                            <tr>
+                                <td>{{ $hogar->puntos_ultimo_reciclado }}</td>
+                                <td>{{ $hogar->peso_ultimo_reciclado }}</td>
+                                <td>{{ $hogar->puntos }}</td>
+                                <td>{{ $hogar->total_peso_reciclado }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                     <br/>
                     Dentro de este apartado, podrás realizar la creación de un hogar a tu nombre. Quedará registrado con tu número de cédula y podrá editar solamente la información de Dirección y la identificación de su hogar. Sin embargo, solo podrá tener a un hogar registrado con su número de cédula.
 
@@ -45,37 +67,15 @@
                                     <form action="{{ url('/hogar/'.$hogar->idhogar ) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <input class="form-control" type="submit" style="width: 130px;height: 40px;" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
+                                        <center><input class="form-control" type="submit" style="width: 120px;height: 40px;" onclick="return confirm('¿Quieres borrar?')" value="Eliminar"></center>
                                     </form>
                                 </td>
                             </tr>
 
                             @endforeach
                         </tbody>
-                    </table>
-                    <br/><br/>
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Últimos Puntos</th>
-                                <th>Último Peso</th>
-                                <th>Total Puntos</th>
-                                <th>Total Peso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $hogares as $hogar )
-                            <tr>
-                                <td>{{ $hogar->puntos_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->peso_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->puntos }}</td>
-                                <td>{{ $hogar->total_peso_reciclado }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    </table>                    
                 </div>
-
             </div>
         </div>
     </div>
