@@ -26,31 +26,20 @@
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
-                                <th>Id del Hogar</th>
-                                <th>Nombre</th>
-                                <th>Dirección</th>
                                 <th>Cantidad de Bolsas</th>
                                 <th>Descripción de Petición</th>
                                 <th>Estado</th>
                                 <th>Comentarios de Administrador</th>
-                                <th>Puntos</th>
-                                <th>Peso(kg)</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach( $peticiones as $peticion )
-
                             <tr>
-                                <td>{{ $peticion->id_hogar }}</td>
-                                <td>{{ $peticion->name }}</td>
-                                <td>{{ $peticion->direccion }}</td>
                                 <td>{{ $peticion->cant_bolsas }}</td>
                                 <td>{{ $peticion->peticion }}</td>
                                 <td>{{ $peticion->estado_peticion }}</td>
                                 <td>{{ $peticion->comentarios }}</td>
-                                <td>{{ $peticion->puntospeticiones }}</td>
-                                <td>{{ $peticion->pesopeticiones }}</td>
                                 <td>
                                     @if($peticion->estado_peticion == 'En espera' || $peticion->estado_peticion == 'Correcciones')
                                         <a href="{{url('/peticiones/'.$peticion->idpeticiones.'/edit')}}" >
