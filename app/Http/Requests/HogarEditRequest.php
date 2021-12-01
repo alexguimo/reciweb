@@ -33,8 +33,9 @@ class HogarEditRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_hogar.required' => 'Este hogar ya se encuentra registrado.',
-            'direccion.required' => 'Esta dirección ya se encuentra registrada.'
+            'id_hogar.unique' => 'Este hogar ya se encuentra registrado.',
+            'id_hogar.required' => 'Digite un Identificador de hogar válido.',
+            'direccion.required' => 'Digite una Dirección de hogar válida.'
         ];
     }
 }
