@@ -19,7 +19,7 @@
                                 <label class="form-control-label px-3">
                                     Registre el Id de su Hogar<br>(No puede ser igual al anterior en caso de querer cambiarlo)
                                 </label>
-                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ old('id_hogar',$hogar->id_hogar) }}">
+                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ old('id_hogar', $hogar->id_hogar) }}" required>
                                 @if($errors->has('id_hogar'))
                                 <span class="error text-danger" for="input-id_hogar">{{ $errors->first('id_hogar') }}</span>
                                 @endif
@@ -28,7 +28,7 @@
                                 <label class="form-control-label px-3">
                                 Digite la dirección de su hogar (Domicilio)
                                 </label>
-                                <input type="text" id="direccion" name="direccion" placeholder="Digite la dirección de su hogar" value="{{ old('direccion',$hogar->direccion }}">
+                                <input type="text" id="direccion" name="direccion" placeholder="Digite la dirección de su hogar" value="{{ old('direccion', $hogar->direccion) }}" required>
                                 @if($errors->has('direccion'))
                                 <span class="error text-danger" for="input-direccion">{{ $errors->first('direccion') }}</span>
                                 @endif

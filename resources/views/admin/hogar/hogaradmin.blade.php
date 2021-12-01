@@ -23,7 +23,6 @@
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
-                                <th>Id</th>
                                 <th>Id del Hogar</th>
                                 <th>Dirección Actual</th>
                                 <th>Nombre</th>
@@ -39,7 +38,6 @@
                         <tbody>
                             @foreach( $hogares as $hogar )
                             <tr>
-                                <td>{{ $hogar->idhogar }}</td>
                                 <td>{{ $hogar->id_hogar }}</td>
                                 <td>{{ $hogar->direccion }}</td>
                                 <td>{{ $hogar->name}}</td>

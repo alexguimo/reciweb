@@ -22,7 +22,6 @@
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Cedula</th>
                                 <th>Correo</th>
@@ -33,7 +32,6 @@
                         <tbody>
                             @foreach( $usuarios as $user )
                             <tr>
-                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->cedula }}</td>
                                 <td>{{ $user->email }}</td>
