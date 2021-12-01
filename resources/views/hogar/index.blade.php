@@ -14,7 +14,7 @@
                     <div class="btn-group">
                         <br/><a href="{{url('/dashboard')}}"><button style="width: 120px;height: 40px;float:left;">Volver</button></a>
                     </div>
-
+                    <br/><br/>
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
