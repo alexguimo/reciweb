@@ -19,11 +19,6 @@
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
-                                <th>Id Peticiones</th>
-                                <th>Nombre</th>
-                                <th>Cedula</th>
-                                <th>Id del Hogar</th>
-                                <th>Dirección</th>
                                 <th>Cantidad de Bolsas</th>
                                 <th>Descripción de Petición</th>
                                 <th>Estado</th>
@@ -36,11 +31,6 @@
                         @foreach( $peticiones as $peticion )
 
                             <tr>
-                                <td>{{ $peticion->idpeticiones }}</td>
-                                <td>{{ $peticion->name }}</td>
-                                <td>{{ $peticion->cedula }}</td>
-                                <td>{{ $peticion->id_hogar }}</td>
-                                <td>{{ $peticion->direccion }}</td>
                                 <td>{{ $peticion->cant_bolsas }}</td>
                                 <td>{{ $peticion->peticion }}</td>
                                 <td>{{ $peticion->estado_peticion }}</td>
