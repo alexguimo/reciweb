@@ -144,7 +144,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" style="text-align: justify">
-                                    Se encarga de conectar a diversos usuarios con los encargados de la recolección de las bolsas de basura que los mismos logran agrupar. Todo esto para que los encargados diligencien la información pertinente en la plataforma y así el usuario pueda recibir en en su cuenta el puntaje ganado por el procesado de sus bolsas recolectadas.
+                                    Su función es la de conectar a diversos usuarios con los encargados de la recolección de las bolsas de basura que los mismos logran agrupar. Todo esto para que los recolectores diligencien la información pertinente en la plataforma y así el usuario pueda recibir en en su cuenta el puntaje ganado por el procesado de sus bolsas recolectadas.
                                 </div>
                             </div>
                         </div>
