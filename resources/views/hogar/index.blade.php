@@ -29,10 +29,6 @@
                                 <th>Id del Hogar</th>
                                 <th>Dirección Actual</th>
                                 <th>Cedula</th>
-                                <th>Últimos Puntos</th>
-                                <th>Último Peso</th>
-                                <th>Total Puntos</th>
-                                <th>Total Peso</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -42,10 +38,6 @@
                                 <td>{{ $hogar->id_hogar }}</td>
                                 <td>{{ $hogar->direccion }}</td>
                                 <td>{{ $hogar->cedula}}</td>
-                                <td>{{ $hogar->puntos_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->peso_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->puntos }}</td>
-                                <td>{{ $hogar->total_peso_reciclado }}</td>
                                 <td>
                                     <a href="{{url('/hogar/'.$hogar->idhogar.'/edit')}}" >
                                         <button>Editar</button>
@@ -58,6 +50,35 @@
                                 </td>
                             </tr>
 
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <div class="card table-responsive">
+                    <table class="table table-light">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Últimos Puntos</th>
+                                <th>Último Peso</th>
+                                <th>Total Puntos</th>
+                                <th>Total Peso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach( $hogares as $hogar )
+                            <tr>
+                                <td>{{ $hogar->puntos_ultimo_reciclado }}</td>
+                                <td>{{ $hogar->peso_ultimo_reciclado }}</td>
+                                <td>{{ $hogar->puntos }}</td>
+                                <td>{{ $hogar->total_peso_reciclado }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
