@@ -33,4 +33,14 @@ class UserEditRequest extends FormRequest
             'password' => 'sometimes'
         ];
     }
+    public function messages()
+    {
+        return[
+            'name.required' => 'Digite un Nombre válido.',
+            'cedula.unique' => 'Esta cedula ya se encuentra registrada.',
+            'cedula.required' => 'Digite una Cedula válida de 10 dígitos.',
+            'email.unique' => 'Este Correo ya se encuentra registrado.',
+            'email.required' => 'Digite un Correo válido.'
+        ];
+    }
 }
