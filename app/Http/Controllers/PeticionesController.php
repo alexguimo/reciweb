@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class PeticionesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('user');
+    }
+    
     /**
      * Display a listing of the resource.
      *
