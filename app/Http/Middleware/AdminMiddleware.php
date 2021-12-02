@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-class UserMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,7 +17,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->rol=='0'){
+        if(Auth::check() && Auth::user()->rol=='1'){
             return $next($request);
         }
         return redirect('/dashboard');
