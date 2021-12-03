@@ -6,66 +6,66 @@
         </h2>
     </x-slot>
 
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
+    <div class="container-fluid px-1 mx-auto">
+        <div class="justify-content">
             <div class="text-center">
-                
-                <div class="card table-responsive">
-                <div class="btn-group">
-                <a href="{{ route('dashboard') }}"><button style="width: 150px;height: 40px; float:left;">Volver</button></a>
-                </div>
+                <div class="card">
+                    <div class="btn-group">
+                        <a href="{{ route('dashboard') }}"><button style="width: 150px;height: 40px; float:left;">Volver</button></a>
+                    </div>
                     Esta es la visualización del administrador dentro de ReciWeb. Dentro de este lugar se podrán crear usuarios, editar sus hogares y modificar el estado de sus peticiónes. Trabaja con cuidado y todo saldrá bien.
                     <div class="btn-group">
-                    <a href="{{ route('register') }}"><button style="width: 150px;height: 40px; float:left;">Crear Usuario</button></a>
+                        <a href="{{ route('register') }}"><button style="width: 150px;height: 40px; float:left;">Crear Usuario</button></a>
                         <a href="{{url('/hogaradmin')}}"><button style="width: 150px;height: 40px; float:left;">Ver Hogares</button></a>
                     </div>
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cedula</th>
-                                <th>Correo</th>
-                                <th>Hogar</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $usuarios as $user )
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->cedula }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    @if($user->tienehogar == 0)
-                                    <a href="{{ url('/hogaradmin/'.$user->id) }}" >
-                                        <button>Crear Hogar</button>
-                                    </a>
-                                    @else
-                                    <a href="{{url('/hogaradmin/'.$user->id.'/edit')}}" >
-                                        <button>Editar Hogar</button>
-                                    </a>
-                                    <form action="{{ url('/hogaradmin/'.$user->id ) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <input class="button btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar Hogar">
-                                    </form>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{url('/admin/'.$user->id.'/edit')}}" >
-                                        <button>Editar Usuario</button>
-                                    </a>
-                                    <form action="{{ url('/admin/'.$user->id ) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <input class="button btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar Usuario">
-                                    </form>
-                                </td>
-                            </tr>
-
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cedula</th>
+                                    <th>Correo</th>
+                                    <th>Hogar</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $usuarios as $user )
+                                <tr>
+                                    <td data-title="Nombre">{{ $user->name }}</td>
+                                    <td data-title="Cedula">{{ $user->cedula }}</td>
+                                    <td data-title="Correo">{{ $user->email }}</td>
+                                    <td data-title="Hogar">
+                                        @if($user->tienehogar == 0)
+                                        <a href="{{ url('/hogaradmin/'.$user->id) }}" >
+                                            <button>Crear Hogar</button>
+                                        </a>
+                                        @else
+                                        <a href="{{url('/hogaradmin/'.$user->id.'/edit')}}" >
+                                            <button>Editar Hogar</button>
+                                        </a>
+                                        <form action="{{ url('/hogaradmin/'.$user->id ) }}" method="post">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <input class="button btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar Hogar">
+                                        </form>
+                                        @endif
+                                    </td>
+                                    <td data-title="Usuario">
+                                        <a href="{{url('/admin/'.$user->id.'/edit')}}" >
+                                            <button>Editar Usuario</button>
+                                        </a>
+                                        <form action="{{ url('/admin/'.$user->id ) }}" method="post">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <input class="button btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar Usuario">
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,6 +128,36 @@
             -webkit-box-shadow: none !important;
             box-shadow: none !important;
             outline-width: 0
+        }
+
+
+        /*TABLA RESPONSIVE*/
+        @media only screen and (max-width:800px){
+            #no-tabla tbody,
+            #no-tabla tr,
+            #no-tabla td {
+                display: block;
+            }
+            #no-tabla thead tr{
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            #no-tabla td{
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            #no-tabla td:before{
+                content: attr(data-title);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+            }
+            #no-tabla tr{
+                border-bottom: 3px solid #ccc;
+            }
         }
     </style>
 </x-app-layout>

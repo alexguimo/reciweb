@@ -5,42 +5,43 @@
         </h2>
     </x-slot>
 
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
+    <div class="container-fluid px-1 mx-auto">
+        <div class="justify-content">
             <div class="text-center">
-                
-                <div class="card table-responsive">
+                <div class="card">
                     <div class="btn-group">
                         <br/><a href="{{url('/peticiones')}}"><button style="width: 120px;height: 40px;float:left;">Volver</button></a>    
                     </div>
                     Las peticiones realizadas aparecerán en forma de lista basadas en la cronología (la más actual estará en la parte superior de la lista y así sucesivamente). Espero por favor puedas compartir tu experiencia basado en los puntajes que te dan los recolectores, de nuevo una y mil gracias por preferir Reciweb.
                     <br/>
                     
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Cantidad de Bolsas</th>
-                                <th>Descripción de Petición</th>
-                                <th>Estado</th>
-                                <th>Comentarios de Administrador</th>
-                                <th>Puntos</th>
-                                <th>Peso(kg)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach( $peticiones as $peticion )
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Cantidad de Bolsas</th>
+                                    <th>Descripción de Petición</th>
+                                    <th>Estado</th>
+                                    <th>Comentarios</th>
+                                    <th>Puntos</th>
+                                    <th>Peso(kg)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $peticiones as $peticion )
 
-                            <tr>
-                                <td>{{ $peticion->cant_bolsas }}</td>
-                                <td>{{ $peticion->peticion }}</td>
-                                <td>{{ $peticion->estado_peticion }}</td>
-                                <td>{{ $peticion->comentarios }}</td>
-                                <td>{{ $peticion->puntospeticiones }}</td>
-                                <td>{{ $peticion->pesopeticiones }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td data-title="Cantidad de Bolsas">{{ $peticion->cant_bolsas }}</td>
+                                    <td data-title="Descripción de Petición">{{ $peticion->peticion }}</td>
+                                    <td data-title="Estado">{{ $peticion->estado_peticion }}</td>
+                                    <td data-title="Comentarios">{{ $peticion->comentarios }}</td>
+                                    <td data-title="Puntos">{{ $peticion->puntospeticiones }}</td>
+                                    <td data-title="Peso(kg)">{{ $peticion->pesopeticiones }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +103,35 @@
             -webkit-box-shadow: none !important;
             box-shadow: none !important;
             outline-width: 0
+        }
+
+        /*TABLA RESPONSIVE*/
+        @media only screen and (max-width:800px){
+            #no-tabla tbody,
+            #no-tabla tr,
+            #no-tabla td {
+                display: block;
+            }
+            #no-tabla thead tr{
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            #no-tabla td{
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            #no-tabla td:before{
+                content: attr(data-title);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+            }
+            #no-tabla tr{
+                border-bottom: 3px solid #ccc;
+            }
         }
     </style>
 </x-app-layout>

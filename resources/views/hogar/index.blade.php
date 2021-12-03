@@ -6,35 +6,36 @@
         </h2>
     </x-slot>
 
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
+    <div class="container-fluid px-1 mx-auto">
+        <div class="justify-content">
             <div class="text-center">
-                
-                <div class="card table-responsive">
+                <div class="card">
                     <div class="btn-group">
                         <br/><a href="{{url('/dashboard')}}"><button style="width: 120px;height: 40px;float:left;">Volver</button></a>
                     </div>
                     <br/>
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Últimos Puntos</th>
-                                <th>Último Peso</th>
-                                <th>Total Puntos</th>
-                                <th>Total Peso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $hogares as $hogar )
-                            <tr>
-                                <td>{{ $hogar->puntos_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->peso_ultimo_reciclado }}</td>
-                                <td>{{ $hogar->puntos }}</td>
-                                <td>{{ $hogar->total_peso_reciclado }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Últimos Puntos Registrados</th>
+                                    <th>Último Peso Registrado</th>
+                                    <th>Total Puntos</th>
+                                    <th>Total Peso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $hogares as $hogar )
+                                <tr>
+                                    <td data-title="Últimos Puntos Registrados">{{ $hogar->puntos_ultimo_reciclado }}</td>
+                                    <td data-title="Último Peso Registrado">{{ $hogar->peso_ultimo_reciclado }}</td>
+                                    <td data-title="Total Puntos">{{ $hogar->puntos }}</td>
+                                    <td data-title="Total Peso">{{ $hogar->total_peso_reciclado }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
                     <br/>
                     Dentro de este apartado, podrás realizar la creación de un hogar a tu nombre. Quedará registrado con tu número de cédula y podrá editar solamente la información de Dirección y la identificación de su hogar. Sin embargo, solo podrá tener a un hogar registrado con su número de cédula.
@@ -45,36 +46,38 @@
                         <br/><center><a href="{{url('/peticiones')}}"><button style="width: 150px;height: 40px; text-align:center;">Peticiones</button></a></center><br/>
                     @endif
 
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Id del Hogar</th>
-                                <th>Dirección Actual</th>
-                                <th>Cedula</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $hogares as $hogar )
-                            <tr>
-                                <td>{{ $hogar->id_hogar }}</td>
-                                <td>{{ $hogar->direccion }}</td>
-                                <td>{{ $hogar->cedula}}</td>
-                                <td>
-                                    <a href="{{url('/hogar/'.$hogar->idhogar.'/edit')}}" >
-                                        <button>Editar</button>
-                                    </a>
-                                    <form action="{{ url('/hogar/'.$hogar->idhogar ) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <center><input class="form-control" type="submit" style="width: 120px;height: 40px;" onclick="return confirm('¿Quieres borrar?')" value="Eliminar"></center>
-                                    </form>
-                                </td>
-                            </tr>
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Identificador del Hogar</th>
+                                    <th>Dirección Actual</th>
+                                    <th>Cedula</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $hogares as $hogar )
+                                <tr>
+                                    <td data-title="Identificador del Hogar">{{ $hogar->id_hogar }}</td>
+                                    <td data-title="Dirección Actual">{{ $hogar->direccion }}</td>
+                                    <td data-title="Cedula">{{ $hogar->cedula}}</td>
+                                    <td data-title="Acciones">
+                                        <a href="{{url('/hogar/'.$hogar->idhogar.'/edit')}}" >
+                                            <button>Editar Hogar</button>
+                                        </a>
+                                        <form action="{{ url('/hogar/'.$hogar->idhogar ) }}" method="post">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <center><input class="form-control" type="submit" style="width: 120px;height: 40px;" onclick="return confirm('¿Quieres borrar?')" value="Eliminar"></center>
+                                        </form>
+                                    </td>
+                                </tr>
 
-                            @endforeach
-                        </tbody>
-                    </table>                    
+                                @endforeach
+                            </tbody>
+                        </table> 
+                    </div>                   
                 </div>
             </div>
         </div>
@@ -139,6 +142,35 @@
             -webkit-box-shadow: none !important;
             box-shadow: none !important;
             outline-width: 0
+        }
+
+        /*TABLA RESPONSIVE*/
+        @media only screen and (max-width:800px){
+            #no-tabla tbody,
+            #no-tabla tr,
+            #no-tabla td {
+                display: block;
+            }
+            #no-tabla thead tr{
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            #no-tabla td{
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            #no-tabla td:before{
+                content: attr(data-title);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+            }
+            #no-tabla tr{
+                border-bottom: 3px solid #ccc;
+            }
         }
     </style>
 </x-app-layout>

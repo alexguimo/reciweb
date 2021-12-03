@@ -130,5 +130,36 @@
             box-shadow: none !important;
             outline-width: 0
         }
+
+
+        /*TABLA RESPONSIVE*/
+        @media only screen and (max-width:800px){
+            #no-tabla tbody,
+            #no-tabla tr,
+            #no-tabla td {
+                display: block;
+            }
+            #no-tabla thead tr{
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            #no-tabla td{
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            #no-tabla td:before{
+                content: attr(data-title);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+            }
+            #no-tabla tr{
+                border-bottom: 3px solid #ccc;
+            }
+        }
+
     </style>
 </x-app-layout>

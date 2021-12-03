@@ -5,11 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
+    <div class="container-fluid px-1 mx-auto">
+        <div class="justify-content">
             <div class="text-center">
-                
-                <div class="card table-responsive">
+                <div class="card">
                     <div class="btn-group">
                         <br/><a href="{{url('/hogar')}}"><button style="width: 120px;height: 40px;float:left;">Volver</button></a>    
                     </div>
@@ -17,46 +16,48 @@
                     Especificar una descripción detallada del contenido, color y cantidad de las bolsas para que un administrador pueda confirmar la validez de esta información y continúe con el proceso de recolección.
                     <br/>
                     
-                    @if($peticiones->isEmpty())
-                        <br/><center><a href="{{ route('peticiones.create') }}"><button style="width: 250px;height: 40px; text-align:center">Crear Petición</button></a></center><br/>
-                    @else
-                        <br/><center><a href="{{ url('/list') }}"><button style="width: 250px;height: 40px; text-align:center;">Peticiones realizadas</button></a></center>
-                    @endif
+                    <div class="btn-group">
+                        @if($peticiones->isEmpty())
+                            <br/><center><a href="{{ route('peticiones.create') }}"><button style="width: 150px;height: 40px; text-align:center">Crear Petición</button></a></center><br/>
+                        @endif
+                            <br/><center><a href="{{ url('/list') }}"><button style="width: 220px;height: 40px; text-align:center;">Peticiones realizadas</button></a></center>
+                    </div>
                     
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Cantidad de Bolsas</th>
-                                <th>Descripción de Petición</th>
-                                <th>Estado</th>
-                                <th>Comentarios de Administrador</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach( $peticiones as $peticion )
-                            <tr>
-                                <td>{{ $peticion->cant_bolsas }}</td>
-                                <td>{{ $peticion->peticion }}</td>
-                                <td>{{ $peticion->estado_peticion }}</td>
-                                <td>{{ $peticion->comentarios }}</td>
-                                <td>
-                                    @if($peticion->estado_peticion == 'En espera' || $peticion->estado_peticion == 'Correcciones')
-                                        <a href="{{url('/peticiones/'.$peticion->idpeticiones.'/edit')}}" >
-                                            <button>Editar Peticion</button>
-                                        </a>
-                                    @else
-                                    @endif
-                                    <form action="{{ url('/peticiones/'.$peticion->idpeticiones ) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <input class="form-control btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Cantidad de Bolsas</th>
+                                    <th>Descripción de Petición</th>
+                                    <th>Estado</th>
+                                    <th>Comentarios de Administrador</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $peticiones as $peticion )
+                                <tr>
+                                    <td data-title="Cantidad de Bolsas">{{ $peticion->cant_bolsas }}</td>
+                                    <td data-title="Descripción de Petición">{{ $peticion->peticion }}</td>
+                                    <td data-title="Estado">{{ $peticion->estado_peticion }}</td>
+                                    <td data-title="Comentarios de Administrador">{{ $peticion->comentarios }}</td>
+                                    <td data-title="Acciones">
+                                        @if($peticion->estado_peticion == 'En espera' || $peticion->estado_peticion == 'Correcciones')
+                                            <a href="{{url('/peticiones/'.$peticion->idpeticiones.'/edit')}}" >
+                                                <button>Editar Peticion</button>
+                                            </a>
+                                        @endif
+                                        <form action="{{ url('/peticiones/'.$peticion->idpeticiones ) }}" method="post">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <input class="form-control btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,6 +119,34 @@
             -webkit-box-shadow: none !important;
             box-shadow: none !important;
             outline-width: 0
+        }
+        /*TABLA RESPONSIVE*/
+        @media only screen and (max-width:800px){
+            #no-tabla tbody,
+            #no-tabla tr,
+            #no-tabla td {
+                display: block;
+            }
+            #no-tabla thead tr{
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            #no-tabla td{
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            #no-tabla td:before{
+                content: attr(data-title);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+            }
+            #no-tabla tr{
+                border-bottom: 3px solid #ccc;
+            }
         }
     </style>
 </x-app-layout>
