@@ -7,7 +7,7 @@
     </x-slot>
 
     <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
                     <form action="{{ url('/peticionesactual/'.$peticiones->idpeticiones.'/'.$peticiones->hogar_id) }}" class="form-card" method="POST" >
@@ -65,7 +65,7 @@
                                 <input type="number" id="hogar_id" name="hogar_id" value="{{ $peticiones->hogar_id }}" readonly>
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <center><input type="submit" value="Actualizar Estado"></center>
+                                <center><input onclick="return confirm('¿Quieres Actualizar el estado de esta petición de esta forma?')" type="submit" value="Actualizar Estado"></center>
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <center><a href="{{url('/peticionesadmin')}}""><input type="button"  class="btn btn-danger" value="Cancelar"></a></center>
@@ -119,8 +119,12 @@
                     $("#comentarios").val('En las próximas 72 horas a partir del '+fecha+', será recolectada su petición.');
                 }else if(seleccionado== 'Finalizada'){
                     document.getElementById('otros').style.display = 'block';
+                    
+                    const dat = new Date();
+                    var fecha = dat.getDate() + "/" + (dat.getMonth() +1) + "/" + dat.getFullYear();
+
                     $("#estado_peticion").val(seleccionado);
-                    $("#comentarios").val('Gracias por utilizar ReciWeb.');
+                    $("#comentarios").val('Gracias por utilizar ReciWeb. ('+fecha+')');
                 }
             });
         });

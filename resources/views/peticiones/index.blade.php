@@ -20,27 +20,27 @@
                         @if($peticiones->isEmpty())
                             <br/><center><a href="{{ route('peticiones.create') }}"><button style="width: 150px;height: 40px; text-align:center">Crear Petición</button></a></center><br/>
                         @endif
-                            <br/><center><a href="{{ url('/list') }}"><button style="width: 220px;height: 40px; text-align:center;">Peticiones realizadas</button></a></center>
+                            <br/><center><a href="{{ url('/list') }}"><button style="width: 120px;height: 40px; text-align:center;">Realizadas</button></a></center>
                     </div>
                     
                     <div class="table-responsive" id="no-tabla">
                         <table class="table table-light">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Cantidad de Bolsas</th>
-                                    <th>Descripción de Petición</th>
+                                    <th>Cant. Bolsas</th>
+                                    <th>Descripción</th>
                                     <th>Estado</th>
-                                    <th>Comentarios de Administrador</th>
+                                    <th>Comentarios</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach( $peticiones as $peticion )
                                 <tr>
-                                    <td data-title="Cantidad de Bolsas">{{ $peticion->cant_bolsas }}</td>
-                                    <td data-title="Descripción de Petición">{{ $peticion->peticion }}</td>
+                                    <td data-title="Cant. Bolsas">{{ $peticion->cant_bolsas }}</td>
+                                    <td data-title="Descripción">{{ $peticion->peticion }}</td>
                                     <td data-title="Estado">{{ $peticion->estado_peticion }}</td>
-                                    <td data-title="Comentarios de Administrador">{{ $peticion->comentarios }}</td>
+                                    <td data-title="Comentarios">{{ $peticion->comentarios }}</td>
                                     <td data-title="Acciones">
                                         @if($peticion->estado_peticion == 'En espera' || $peticion->estado_peticion == 'Correcciones')
                                             <a href="{{url('/peticiones/'.$peticion->idpeticiones.'/edit')}}" >
@@ -50,7 +50,7 @@
                                         <form action="{{ url('/peticiones/'.$peticion->idpeticiones ) }}" method="post">
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <input class="form-control btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar">
+                                            <center><input class="form-control btn-danger" style="width: 120px;" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Eliminar"></center>
                                         </form>
                                     </td>
                                 </tr>

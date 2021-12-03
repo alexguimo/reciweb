@@ -34,6 +34,9 @@
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <center><input type="submit" value="Actualizar Petición"></center>
                             </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <center><a href="{{url('/peticiones')}}""><input type="button"  class="btn btn-danger" value="Volver"></a></center>
+                            </div>
                         </div>
                     </form>
                 </div>

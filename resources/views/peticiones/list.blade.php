@@ -19,8 +19,8 @@
                         <table class="table table-light">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Cantidad de Bolsas</th>
-                                    <th>Descripción de Petición</th>
+                                    <th>Cant. Bolsas</th>
+                                    <th>Descripción</th>
                                     <th>Estado</th>
                                     <th>Comentarios</th>
                                     <th>Puntos</th>
@@ -29,16 +29,15 @@
                             </thead>
                             <tbody>
                             @foreach( $peticiones as $peticion )
-
                                 <tr>
-                                    <td data-title="Cantidad de Bolsas">{{ $peticion->cant_bolsas }}</td>
-                                    <td data-title="Descripción de Petición">{{ $peticion->peticion }}</td>
+                                    <td data-title="Cant. Bolsas">{{ $peticion->cant_bolsas }}</td>
+                                    <td data-title="Descripción">{{ $peticion->peticion }}</td>
                                     <td data-title="Estado">{{ $peticion->estado_peticion }}</td>
                                     <td data-title="Comentarios">{{ $peticion->comentarios }}</td>
                                     <td data-title="Puntos">{{ $peticion->puntospeticiones }}</td>
                                     <td data-title="Peso(kg)">{{ $peticion->pesopeticiones }}</td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

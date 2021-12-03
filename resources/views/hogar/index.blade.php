@@ -50,8 +50,8 @@
                         <table class="table table-light">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Identificador del Hogar</th>
-                                    <th>Dirección Actual</th>
+                                    <th>Identif. Hogar</th>
+                                    <th>Dirección</th>
                                     <th>Cedula</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -59,7 +59,7 @@
                             <tbody>
                                 @foreach( $hogares as $hogar )
                                 <tr>
-                                    <td data-title="Identificador del Hogar">{{ $hogar->id_hogar }}</td>
+                                    <td data-title="Identif. Hogar">{{ $hogar->id_hogar }}</td>
                                     <td data-title="Dirección Actual">{{ $hogar->direccion }}</td>
                                     <td data-title="Cedula">{{ $hogar->cedula}}</td>
                                     <td data-title="Acciones">

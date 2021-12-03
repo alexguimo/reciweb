@@ -7,11 +7,10 @@
         </h2>
     </x-slot>
 
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="d-flex justify-content-center">
+    <div class="container-fluid px-1 mx-auto">
+        <div class="justify-content">
             <div class="text-center">
-                
-                <div class="card table-responsive">
+                <div class="card">
                     <div class="btn-group">
                         <br/><a href="{{ url('/peticionesuser/'.$id)}}"><button style="width: 250px;height: 40px;float:left;">Volver</button></a>    
                     </div>
@@ -19,37 +18,39 @@
                     Especificar una descripción detallada del contenido, color y cantidad de las bolsas para que un administrador pueda confirmar la validez de esta información y continúe con el proceso de recolección.
                     <br/>
                     
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Id del Hogar</th>
-                                <th>Nombre</th>
-                                <th>Dirección</th>
-                                <th>Cantidad de Bolsas</th>
-                                <th>Descripción de Petición</th>
-                                <th>Estado</th>
-                                <th>Comentarios de Administrador</th>
-                                <th>Puntos</th>
-                                <th>Peso (Kg)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach( $peticiones as $peticion )
+                    <div class="table-responsive" id="no-tabla">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Identif. Hogar</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th>Cant. Bolsas</th>
+                                    <th>Descripción</th>
+                                    <th>Estado</th>
+                                    <th>Comentarios</th>
+                                    <th>Puntos</th>
+                                    <th>Peso (Kg)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $peticiones as $peticion )
 
-                            <tr>
-                                <td>{{ $peticion->id_hogar }}</td>
-                                <td>{{ $peticion->name }}</td>
-                                <td>{{ $peticion->direccion }}</td>
-                                <td>{{ $peticion->cant_bolsas }}</td>
-                                <td>{{ $peticion->peticion }}</td>
-                                <td>{{ $peticion->estado_peticion }}</td>
-                                <td>{{ $peticion->comentarios }}</td>
-                                <td>{{ $peticion->puntospeticiones }}</td>
-                                <td>{{ $peticion->pesopeticiones }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td data-title="Identif. Hogar">{{ $peticion->id_hogar }}</td>
+                                    <td data-title="Nombre">{{ $peticion->name }}</td>
+                                    <td data-title="Dirección">{{ $peticion->direccion }}</td>
+                                    <td data-title="Cant. Bolsas">{{ $peticion->cant_bolsas }}</td>
+                                    <td data-title="Descripción">{{ $peticion->peticion }}</td>
+                                    <td data-title="Estado">{{ $peticion->estado_peticion }}</td>
+                                    <td data-title="Comentarios">{{ $peticion->comentarios }}</td>
+                                    <td data-title="Puntos">{{ $peticion->puntospeticiones }}</td>
+                                    <td data-title="Peso (Kg)">{{ $peticion->pesopeticiones }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

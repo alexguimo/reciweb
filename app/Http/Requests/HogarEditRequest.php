@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\hogar;
 use Illuminate\Foundation\Http\FormRequest;
+use PhpParser\NodeVisitor\FirstFindingVisitor;
 
 class HogarEditRequest extends FormRequest
 {
@@ -24,8 +25,13 @@ class HogarEditRequest extends FormRequest
      */
     public function rules()
     {
+        $id = hogar::join('users','hogars.user_id','=','users.id')
+        ->Where('id_hogar','=',request('id_hogar'))
+        ->pluck('idhogar')
+        ->First();
+
         return [
-            'id_hogar' => ['required', 'string', 'max:255', 'unique:hogars,id_hogar'],
+            'id_hogar' => ['required', 'string', 'max:255', 'unique:hogars,id_hogar,'.$id],
             'direccion' => ['required', 'string', 'max:255'],
         ];
     }
