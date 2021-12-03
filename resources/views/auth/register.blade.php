@@ -69,7 +69,7 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('¿Ya se encuentra registrad@?') }}
                 </a>
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('admin.create') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('registeradmin.create') }}">
                     {{ __('¿Serás Administrador?') }}
                 </a>
                 <x-jet-button class="ml-4">

@@ -51,6 +51,7 @@ Route::resource('peticionesadmin', PeticionesadminController::class);
 
 Route::resource('useradmin', UseradminController::class);
 Route::resource('admin', AdministracionController::class);
+Route::resource('registeradmin', UseradminController::class);
 
 Route::get('/listadmin', [PeticionesadminController::class, 'indexlist']);
 Route::get('/peticionesuser/{idhoga}', [PeticionesadminController::class, 'indexuser']);

@@ -25,7 +25,7 @@ class UseradminController extends Controller
      */
     public function create()
     {
-        //return view('auth.register');
+        return view('auth.registeradmin');
     }
 
     /**
