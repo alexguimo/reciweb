@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HogarCreateRequest;
 use App\Http\Requests\HogarEditRequest;
 use App\Models\hogar;
 use App\Models\peticiones;
@@ -50,7 +51,7 @@ class HogarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HogarEditRequest $request)
+    public function store(HogarCreateRequest $request)
     {
         /*$hognuevo=request('id_hogar');
         $actual=hogar::Where('user_id','=',Auth::user()->id);*/

@@ -7,6 +7,98 @@
         </h2>
     </x-slot>
 
+    <?php
+    $miarreglo = array(
+        "Aguada",
+        "Albania",
+        "Aratoca",
+        "Barbosa",
+        "Barichara",
+        "Barrancabermeja",
+        "Betulia",
+        "Bolívar",
+        "Bucaramanga",
+        "Cabrera",
+        "California",
+        "Capitanejo",
+        "Carcasí",
+        "Cepitá",
+        "Cerrito",
+        "Charalá",
+        "Charta",
+        "Chima",
+        "Chipatá",
+        "Cimitarra",
+        "Concepción",
+        "Confines",
+        "Contratación",
+        "Coromoro",
+        "Curití",
+        "El Carmen de Chucurí",
+        "El Guacamayo",
+        "El Peñón",
+        "El Playón",
+        "Encino",
+        "Enciso",
+        "Florián",
+        "Floridablanca",
+        "Galán",
+        "Gámbita",
+        "Girón",
+        "Guaca",
+        "Guadalupe",
+        "Guapotá",
+        "Guavatá",
+        "Güepsa",
+        "Hato",
+        "Jesús María",
+        "Jordán",
+        "La Belleza",
+        "La Paz",
+        "Landázuri",
+        "Lebrija",
+        "Los Santos",
+        "Macaravita",
+        "Málaga",
+        "Matanza",
+        "Mogotes",
+        "Molagavita",
+        "Ocamonte",
+        "Oiba",
+        "Onzaga",
+        "Palmar",
+        "Palmas del Socorro",
+        "Páramo",
+        "Piedecuesta",
+        "Pinchote",
+        "Puente Nacional",
+        "Puerto Parra",
+        "Puerto Wilches",
+        "Rionegro",
+        "Sabana de Torres",
+        "San Andrés",
+        "San Benito",
+        "San Gil",
+        "San Joaquín",
+        "San José de Miranda",
+        "San Miguel",
+        "San Vicente de Chucurí",
+        "Santa Bárbara",
+        "Santa Helena del Opón",
+        "Simacota",
+        "Socorro",
+        "Suaita",
+        "Sucre",
+        "Suratá",
+        "Tona",
+        "Valle de San José",
+        "Vélez",
+        "Vetas",
+        "Villanueva",
+        "Zapatoca"
+    );
+    ?>
+
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
@@ -17,9 +109,9 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Identif. de su Hogar
+                                    Identif. de su Hogar (Para cambiarlo, debe borrar su hogar y crear uno nuevo)
                                 </label>
-                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ old('id_hogar', $hogar->id_hogar) }}" required>
+                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ old('id_hogar', $hogar->id_hogar) }}" disabled>
                                 @if($errors->has('id_hogar'))
                                 <span class="error text-danger" for="input-id_hogar">{{ $errors->first('id_hogar') }}</span>
                                 @endif

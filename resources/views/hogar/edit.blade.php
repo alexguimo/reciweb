@@ -108,9 +108,9 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Identif. de su Hogar
+                                Identif. de su Hogar (Para cambiarlo, debe borrar su hogar y crear uno nuevo)
                                 </label>
-                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ $hogar->id_hogar }}">
+                                <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ $hogar->id_hogar }}" disabled>
                                 @if($errors->has('id_hogar'))
                                 <span class="error text-danger" for="input-id_hogar">{{ $errors->first('id_hogar') }}</span>
                                 @endif

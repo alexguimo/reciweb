@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HogarCreateRequest;
 use App\Http\Requests\HogarEditRequest;
 use App\Models\hogaradmin;
 use App\Models\hogar;
@@ -58,9 +59,9 @@ class HogaradminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HogarCreateRequest $request)
     {
-        $datosHogar = request()->except(['_token', 'tienehogar']);
+        $datosHogar = $request->except(['_token', 'tienehogar']);   
         hogar::insert($datosHogar);
 
         User::where('id', '=', request('user_id'))->update(['tienehogar'=> request('tienehogar')]);
@@ -111,10 +112,10 @@ class HogaradminController extends Controller
         ->where('idhogar','=',$id)->update($datosHogar);
         return redirect('admin');*/
 
-        $data = $request->only('id_hogar', 'direccion');
+        $data = $request->except(['_token', '_method', 'tienehogar']);
 
         hogar::where('idhogar','=',$id)->update($data);
-        
+                
         return redirect('admin');
         
     }

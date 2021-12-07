@@ -108,7 +108,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Registre el Identif. de su Hogar
+                                Identif. de su Hogar (Código de Recaudo Electrónico - Recibo del Agua)
                                 </label>
                                 <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" required>
                                 @if($errors->has('id_hogar'))
@@ -256,4 +256,13 @@
             outline-width: 0
         }
     </style>
+    <script>
+        jQuery(document).ready(function(){
+			// Listen for the input event.
+			jQuery("#id_hogar").on('input', function (evt) {
+				// Allow only numbers.
+				jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
+			});
+		});
+    </script>
 </x-app-layout>
