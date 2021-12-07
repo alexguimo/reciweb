@@ -6,6 +6,7 @@ use App\Http\Requests\HogarEditRequest;
 use App\Models\hogar;
 use App\Models\peticiones;
 use App\Models\User;
+use Database\Seeders\HogaradminSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -49,9 +50,12 @@ class HogarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HogarEditRequest $request)
     {
-        $datosHogar = request()->except(['_token', 'tienehogar']);
+        /*$hognuevo=request('id_hogar');
+        $actual=hogar::Where('user_id','=',Auth::user()->id);*/
+
+        $datosHogar = $request->except(['_token', 'tienehogar']);
         hogar::insert($datosHogar);
 
         User::where('id', '=', request('user_id'))->update(['tienehogar'=> request('tienehogar')]);
@@ -90,7 +94,7 @@ class HogarController extends Controller
      */
     public function update(HogarEditRequest $request, $id)
     {
-        $data = $request->only('id_hogar', 'direccion');
+        $data = $request->except(['_token', '_method', 'tienehogar']);
 
         hogar::where('idhogar','=',$id)->update($data);
         

@@ -18,6 +18,7 @@ class CreateHogarsTable extends Migration
             $table->string('id_hogar')->unique();
             $table->float('puntos');
             $table->string('direccion');
+            $table->string('ciudad');
             $table->float('puntos_ultimo_reciclado');
             $table->float('peso_ultimo_reciclado');
             $table->float('total_peso_reciclado');

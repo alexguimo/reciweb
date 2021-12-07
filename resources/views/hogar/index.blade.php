@@ -19,9 +19,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Últimos Puntos Registrados</th>
-                                    <th>Último Peso Registrado</th>
+                                    <th>Último Peso(Kg)</th>
                                     <th>Total Puntos</th>
-                                    <th>Total Peso</th>
+                                    <th>Total Peso(Kg)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,7 +51,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Identif. Hogar</th>
-                                    <th>Dirección</th>
+                                    <th>Ciudad</th>
+                                    <th>Dirección y Barrio</th>
                                     <th>Cedula</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -60,7 +61,8 @@
                                 @foreach( $hogares as $hogar )
                                 <tr>
                                     <td data-title="Identif. Hogar">{{ $hogar->id_hogar }}</td>
-                                    <td data-title="Dirección Actual">{{ $hogar->direccion }}</td>
+                                    <td data-title="Ciudad">{{ $hogar->ciudad}}</td>
+                                    <td data-title="Dirección/Barrio">{{ $hogar->direccion }}</td>
                                     <td data-title="Cedula">{{ $hogar->cedula}}</td>
                                     <td data-title="Acciones">
                                         <a href="{{url('/hogar/'.$hogar->idhogar.'/edit')}}" >

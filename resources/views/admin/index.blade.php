@@ -19,7 +19,8 @@
                         <a href="{{url('/hogaradmin')}}"><button style="width: 150px;height: 40px; float:left;">Ver Hogares</button></a>
                     </div>
                     <div class="table-responsive" id="no-tabla">
-                        <table class="table table-light">
+                        <br/>
+                        <table class="table table-light" id="buscador">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Nombre</th>

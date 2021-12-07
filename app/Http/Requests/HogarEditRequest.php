@@ -30,8 +30,11 @@ class HogarEditRequest extends FormRequest
         ->pluck('idhogar')
         ->First();
 
+        /* , 'unique:hogars,id_hogar,'.$id */
+
         return [
-            'id_hogar' => ['required', 'string', 'max:255', 'unique:hogars,id_hogar,'.$id],
+            'id_hogar' => ['required', 'string', 'max:255'],
+            'ciudad' => ['required', 'string', 'max:255'],
             'direccion' => ['required', 'string', 'max:255'],
         ];
     }
@@ -39,9 +42,10 @@ class HogarEditRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_hogar.unique' => 'Este hogar ya se encuentra registrado.',
+            //'id_hogar.unique' => 'Este hogar ya se encuentra registrado.',
             'id_hogar.required' => 'Digite un Identificador de hogar válido.',
-            'direccion.required' => 'Digite una Dirección de hogar válida.'
+            'direccion.required' => 'Digite una Dirección de hogar.',
+            'ciudad.required' => 'Seleccione una Ciudad válida.'
         ];
     }
 }

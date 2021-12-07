@@ -28,7 +28,7 @@ class UserEditRequest extends FormRequest
         $user = User::where('id','=',request('id'));
         return [
             'name' => 'required', 'string', 'max:255',
-            'cedula' => ['required', 'string', 'min:10', 'max:10', 'unique:users,cedula,'.request('id')],
+            'cedula' => ['required', 'string', 'min:5', 'max:10', 'unique:users,cedula,'.request('id')],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,'.request('id')],
             'password' => 'sometimes'
         ];

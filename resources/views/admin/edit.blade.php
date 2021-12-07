@@ -16,7 +16,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Registre el Id de su Hogar
+                                    Registre el Identif. de su Hogar
                                 </label>
                                 <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ $hogar->id_hogar }}">
                             </div>

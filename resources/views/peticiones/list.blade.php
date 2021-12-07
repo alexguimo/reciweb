@@ -16,7 +16,8 @@
                     <br/>
                     
                     <div class="table-responsive" id="no-tabla">
-                        <table class="table table-light">
+                        <br/>
+                        <table class="table table-light table-striped" id="buscador">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Cant. Bolsas</th>
@@ -132,5 +133,7 @@
                 border-bottom: 3px solid #ccc;
             }
         }
+        
     </style>
+
 </x-app-layout>

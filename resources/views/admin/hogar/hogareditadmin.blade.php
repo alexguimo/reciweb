@@ -17,7 +17,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Registre el Id de su Hogar<br>(No puede ser igual al anterior en caso de querer cambiarlo)
+                                    Identif. de su Hogar
                                 </label>
                                 <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ old('id_hogar', $hogar->id_hogar) }}" required>
                                 @if($errors->has('id_hogar'))
@@ -26,7 +26,21 @@
                             </div>
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                Digite la dirección de su hogar (Domicilio)
+                                    Ciudad
+                                </label>
+                                <select class="form-select col-sm-8 d-flex" aria-label="Default select example" id="ciudad" name="ciudad" required>
+                                    <option value="{{ $hogar->ciudad }}" selected>{{ $hogar->ciudad }}</option>
+                                    @foreach($miarreglo as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('ciudad'))
+                                <span class="error text-danger" for="input-ciudad">{{ $errors->first('ciudad') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-sm-8 flex-column d-flex">
+                                <label class="form-control-label px-3">
+                                    Dirección y Barrio (Domicilio)
                                 </label>
                                 <input type="text" id="direccion" name="direccion" placeholder="Digite la dirección de su hogar" value="{{ old('direccion', $hogar->direccion) }}" required>
                                 @if($errors->has('direccion'))

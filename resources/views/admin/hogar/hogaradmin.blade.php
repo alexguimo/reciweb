@@ -20,17 +20,19 @@
                         <center><a href="{{ url('/peticionesadmin')}}"><button style="width: 250px;height: 40px; text-align:center;">Peticiones desde Admin</button></a></center><br/>
                     </div>
                     <div class="table-responsive" id="no-tabla">
-                        <table class="table table-light">
+                        <br/>
+                        <table class="table table-light" id="buscador">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Identif. Hogar</th>
-                                    <th>Dirección</th>
+                                    <th>Ciudad</th>
+                                    <th>Dirección y Barrio</th>
                                     <th>Nombre</th>
                                     <th>Cedula</th>
                                     <th>Últimos Puntos</th>
-                                    <th>Último Peso</th>
+                                    <th>Último Peso(Kg)</th>
                                     <th>Total Puntos</th>
-                                    <th>Total Peso (Kg)</th>
+                                    <th>Total Peso(Kg)</th>
                                     <th>Peticiones</th>
                                     <!--<th>Acciones</th>-->
                                 </tr>
@@ -39,13 +41,14 @@
                                 @foreach( $hogares as $hogar )
                                 <tr>
                                     <td data-title="Identif. Hogar">{{ $hogar->id_hogar }}</td>
-                                    <td data-title="Dirección">{{ $hogar->direccion }}</td>
+                                    <td data-title="Ciudad">{{ $hogar->ciudad }}</td>
+                                    <td data-title="Dirección/Barrio">{{ $hogar->direccion }}</td>
                                     <td data-title="Nombre">{{ $hogar->name}}</td>
                                     <td data-title="Cedula">{{ $hogar->cedula}}</td>
                                     <td data-title="Últ. Puntos">{{ $hogar->puntos_ultimo_reciclado }}</td>
-                                    <td data-title="Últ. Peso (Kg)">{{ $hogar->peso_ultimo_reciclado }}</td>
+                                    <td data-title="Últ. Peso(Kg)">{{ $hogar->peso_ultimo_reciclado }}</td>
                                     <td data-title="Total Puntos">{{ $hogar->puntos }}</td>
-                                    <td data-title="Total Peso (Kg)">{{ $hogar->total_peso_reciclado }}</td>
+                                    <td data-title="Total Peso(Kg)">{{ $hogar->total_peso_reciclado }}</td>
                                     <td data-title="Peticiones">
                                         <a href="{{ url('/peticionesuser/'.$hogar->idhogar)}}" >
                                             <button>Ver Peticiones</button>

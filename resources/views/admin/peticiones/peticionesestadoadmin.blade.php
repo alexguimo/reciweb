@@ -48,13 +48,13 @@
                                     <label class="form-control-label px-3">
                                         Puntos
                                     </label>
-                                    <input type="number" id="puntospeticiones" name="puntospeticiones" value="0">
+                                    <input type="text" id="puntospeticiones" name="puntospeticiones" value="0">
                                 </div>
                                 <div class="form-group col-sm-8 flex-column d-flex">
                                     <label class="form-control-label px-3">
-                                        Peso(kg)
+                                        Peso(kg). [Utilice el diferenciador . (PUNTO) como separador en los decimales.]
                                     </label>
-                                    <input type="number" id="pesopeticiones" name="pesopeticiones" value="0">
+                                    <input type="text" id="pesopeticiones" name="pesopeticiones" value="0">
                                 </div>
                             </div>
 
@@ -128,6 +128,18 @@
                 }
             });
         });
+
+        jQuery(document).ready(function(){
+			// Listen for the input event.
+			jQuery("#puntospeticiones").on('input', function (evt) {
+				// Allow only numbers.
+				jQuery(this).val(jQuery(this).val().replace(/[^0-9,.]/g, ''));
+			});
+            jQuery("#pesopeticiones").on('input', function (evt) {
+				// Allow only numbers.
+				jQuery(this).val(jQuery(this).val().replace(/[^0-9,.]/g, ''));
+			});
+		});
 
         
     </script>

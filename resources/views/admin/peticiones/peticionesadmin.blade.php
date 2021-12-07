@@ -20,12 +20,14 @@
                     <br/><center><a href="/listadmin"><button style="width: 120px;height: 40px; text-align:center;">Realizadas</button></a></center>
                     
                     <div class="table-responsive" id="no-tabla">
-                        <table class="table table-light">
+                        <br/>
+                        <table class="table table-light" id="buscador">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Identif. Hogar</th>
                                     <th>Nombre</th>
-                                    <th>Dirección</th>
+                                    <th>Ciudad</th>
+                                    <th>Dirección y Barrio</th>
                                     <th>Cant. Bolsas</th>
                                     <th>Descripción</th>
                                     <th>Estado</th>
@@ -41,6 +43,7 @@
                                 <tr>
                                     <td data-title="Identif. Hogar">{{ $peticion->id_hogar }}</td>
                                     <td data-title="Nombre">{{ $peticion->name }}</td>
+                                    <td data-title="Ciudad">{{ $peticion->ciudad }}</td>
                                     <td data-title="Dirección">{{ $peticion->direccion }}</td>
                                     <td data-title="Cant. Bolsas">{{ $peticion->cant_bolsas }}</td>
                                     <td data-title="Descripción">{{ $peticion->peticion }}</td>

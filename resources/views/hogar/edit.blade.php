@@ -6,6 +6,98 @@
         </h2>
     </x-slot>
 
+    <?php
+    $miarreglo = array(
+        "Aguada",
+        "Albania",
+        "Aratoca",
+        "Barbosa",
+        "Barichara",
+        "Barrancabermeja",
+        "Betulia",
+        "Bolívar",
+        "Bucaramanga",
+        "Cabrera",
+        "California",
+        "Capitanejo",
+        "Carcasí",
+        "Cepitá",
+        "Cerrito",
+        "Charalá",
+        "Charta",
+        "Chima",
+        "Chipatá",
+        "Cimitarra",
+        "Concepción",
+        "Confines",
+        "Contratación",
+        "Coromoro",
+        "Curití",
+        "El Carmen de Chucurí",
+        "El Guacamayo",
+        "El Peñón",
+        "El Playón",
+        "Encino",
+        "Enciso",
+        "Florián",
+        "Floridablanca",
+        "Galán",
+        "Gámbita",
+        "Girón",
+        "Guaca",
+        "Guadalupe",
+        "Guapotá",
+        "Guavatá",
+        "Güepsa",
+        "Hato",
+        "Jesús María",
+        "Jordán",
+        "La Belleza",
+        "La Paz",
+        "Landázuri",
+        "Lebrija",
+        "Los Santos",
+        "Macaravita",
+        "Málaga",
+        "Matanza",
+        "Mogotes",
+        "Molagavita",
+        "Ocamonte",
+        "Oiba",
+        "Onzaga",
+        "Palmar",
+        "Palmas del Socorro",
+        "Páramo",
+        "Piedecuesta",
+        "Pinchote",
+        "Puente Nacional",
+        "Puerto Parra",
+        "Puerto Wilches",
+        "Rionegro",
+        "Sabana de Torres",
+        "San Andrés",
+        "San Benito",
+        "San Gil",
+        "San Joaquín",
+        "San José de Miranda",
+        "San Miguel",
+        "San Vicente de Chucurí",
+        "Santa Bárbara",
+        "Santa Helena del Opón",
+        "Simacota",
+        "Socorro",
+        "Suaita",
+        "Sucre",
+        "Suratá",
+        "Tona",
+        "Valle de San José",
+        "Vélez",
+        "Vetas",
+        "Villanueva",
+        "Zapatoca"
+    );
+    ?>
+
     <div class="container-fluid px-1 mx-auto">
         <div class="d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
@@ -16,7 +108,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Registre el Id de su Hogar
+                                    Identif. de su Hogar
                                 </label>
                                 <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar" value="{{ $hogar->id_hogar }}">
                                 @if($errors->has('id_hogar'))
@@ -25,7 +117,21 @@
                             </div>
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                Digite la dirección de su hogar (Domicilio)
+                                    Ciudad
+                                </label>
+                                <select class="form-select col-sm-8 d-flex" aria-label="Default select example" id="ciudad" name="ciudad" required>
+                                    <option value="{{ $hogar->ciudad }}" selected>{{ $hogar->ciudad }}</option>
+                                    @foreach($miarreglo as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('ciudad'))
+                                <span class="error text-danger" for="input-ciudad">{{ $errors->first('ciudad') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-sm-8 flex-column d-flex">
+                                <label class="form-control-label px-3">
+                                    Dirección y Barrio (Domicilio)
                                 </label>
                                 <input type="text" id="direccion" name="direccion" placeholder="Digite la dirección de su hogar" value="{{ $hogar->direccion }}">
                                 @if($errors->has('direccion'))

@@ -16,15 +16,35 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
-                                    Registre el Id de su Hogar
+                                Registre el Identif. de su Hogar
                                 </label>
                                 <input type="text" id="id_hogar" name="id_hogar" placeholder="Registre el Id de su Hogar">
+                                @if($errors->has('id_hogar'))
+                                <span class="error text-danger" for="input-id_hogar">{{ $errors->first('id_hogar') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-sm-8 flex-column d-flex">
+                                <label class="form-control-label px-3">
+                                    Ciudad
+                                </label>
+                                <select class="form-select col-sm-8 flex-column d-flex" aria-label="Default select example" id="ciudad" name="ciudad" required>
+                                    <option selected>Seleccione una opción</option>
+                                    @foreach($miarreglo as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('ciudad'))
+                                <span class="error text-danger" for="input-ciudad">{{ $errors->first('ciudad') }}</span>
+                                @endif
                             </div>
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
                                 Digite la dirección de su hogar (Domicilio)
                                 </label>
                                 <input type="text" id="direccion" name="direccion" placeholder="Digite la dirección de su hogar">
+                                @if($errors->has('direccion'))
+                                <span class="error text-danger" for="input-direccion">{{ $errors->first('direccion') }}</span>
+                                @endif
                             </div>
                             <div class="form-group col-sm-8 flex-column d-flex">
                                 <label class="form-control-label px-3">
@@ -32,13 +52,13 @@
                                 </label>
                                 <input type="number" id="user_id" name="user_id" value="{{ $hogar->cedula }}" readonly>
                             </div>
+                            <!--Invisible-->
                             <div class="form-group col-sm-8 flex-column d-flex d-none">
                                 <label class="form-control-label px-3">
                                     Id del Usuario
                                 </label>
                                 <input type="number" id="user_id" name="user_id" value="{{ $hogar->id }}" readonly>
                             </div>
-
                             <div class="form-group col-sm-8 flex-column d-flex d-none">
                                 <label class="form-control-label px-3">
                                     Tiene hogar

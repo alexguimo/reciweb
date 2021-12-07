@@ -11,6 +11,6 @@ class hogaradmin extends Model
     
     protected $table = 'hogars';
     protected $primaryKey = 'idhogar';
-    protected $fillable = ['idhogar', 'id_hogar', 'puntos', 'direccion', 'puntos_ultimo_reciclado', 'peso_ultimo_reciclado', 'total_peso_reciclado', 'user_id'];
+    protected $fillable = ['idhogar', 'id_hogar', 'puntos', 'direccion', 'ciudad', 'puntos_ultimo_reciclado', 'peso_ultimo_reciclado', 'total_peso_reciclado', 'user_id'];
 
 }

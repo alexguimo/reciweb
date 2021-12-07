@@ -60,6 +60,7 @@ class PeticionesadminController extends Controller
     public function indexuserlist($id)
     {
         $peticiones=peticiones::join('hogars','peticiones.hogar_id','=','hogars.idhogar')
+        ->join('users','hogars.user_id','=','users.id')
         ->Where('hogar_id','=',$id)
         ->where('estado_peticion', '=','Finalizada')
         ->orderBy('idpeticiones', 'DESC')
